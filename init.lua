@@ -121,6 +121,10 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Set Tab length
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -262,6 +266,19 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+    },
+  },
+
+  --Love2D Config Update
+  -- using lazy.nvim
+  {
+    'S1M0N38/love2d.nvim',
+    cmd = 'LoveRun',
+    opts = {},
+    keys = {
+      { '<leader>v', ft = 'lua', desc = 'LÖVE' },
+      { '<leader>vv', '<cmd>LoveRun<cr>', ft = 'lua', desc = 'Run LÖVE' },
+      { '<leader>vs', '<cmd>LoveStop<cr>', ft = 'lua', desc = 'Stop LÖVE' },
     },
   },
 
@@ -679,6 +696,11 @@ require('lazy').setup({
             Lua = {
               completion = {
                 callSnippet = 'Replace',
+                workspace = {
+                  userThirdParty = { os.getenv 'HOME' .. '.local/share/LuaAddons' },
+                  checkThirdParty = 'Apply',
+                },
+                telemetry = { enable = false },
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
@@ -902,7 +924,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
 
